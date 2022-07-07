@@ -1,0 +1,100 @@
+@import '../../shared/styles/_variables.scss';
+
+.black-block{
+    height: 450px;
+    background-image: url(https://monosushi.com.ua/wp-content/uploads/2020/10/banner-img-1-1920x650.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    h2{
+        font-size: 42px;
+        color: $secondary;
+        font-weight: bold;
+        span{
+            color: $primary;
+        }
+    }
+    p{
+        font-size: 20px;
+        color: $secondary;
+        margin-bottom: 0px;
+    }
+    .btn-more{
+        width: 188px;
+        margin-top: 27px;
+        background-color: $primary;
+        border: 2px solid $primary;
+        padding: 16px 22px;
+    }
+    .btn-more:hover{
+        border: 2px solid $primary;
+        background: none;
+        color: $secondary;
+    }
+}
+.button{
+    display: inline-block;
+    vertical-align: bottom;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: .35s;
+    text-transform: uppercase;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    color: #252525;
+
+}
+
+.delivery-info{
+    height: 175px;
+    background-color: $primary;
+    background-image: url(https://monosushi.com.ua/wp-content/themes/monosushi/img/bg-monosushi-logo.svg), url(https://monosushi.com.ua/wp-content/themes/monosushi/img/bg-monosushi-logo.svg);
+    background-repeat: repeat;
+    background-position: 0 0,190px -52px;
+    >div{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+    .zone{
+        img{
+            width: 135px;
+            height: 88px;
+        }
+        .button{
+            
+            border: 2px solid $secondary;
+            width: 176px;
+            height: 56px;
+            background-color: $secondary;
+        }
+        .button:hover{
+            border: 2px solid $secondary;
+            background: none;
+        }
+    }
+    .time{
+        img{
+            width: 90px;
+            height: 82px;
+        }
+    }
+    
+    .hours{
+        img{
+            width: 75px;
+            height: 95px;
+        }
+    }
+}
+
+

@@ -1,0 +1,19 @@
+{
+  "actions": [
+    {
+      "name": "Рол тижня",
+      "title": "50% знижки на рол тижня",
+      "description": "Щотижня діє знижка 50% на один з ролів",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/lesson08-60c52.appspot.com/o/images%2Factions%2FModern-office-people-at-desk.jpg?alt=media&token=d49942f8-2190-4fbd-b9f8-f20f66df2dbf",
+      "id": 1
+    }
+  ],
+  "categories": [
+    {
+      "name": "Роли",
+      "path": "rolls",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/lesson08-60c52.appspot.com/o/images%2Fcategories%2F400_400_max.png?alt=media&token=e3020a8a-49b5-40b9-91f1-64903edb87dc",
+      "id": 1
+    }
+  ]
+}

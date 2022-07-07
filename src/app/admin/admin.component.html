@@ -1,0 +1,21 @@
+
+<div style="height: 40px;"></div>
+<div class="container">
+    
+        <div class="row">
+            <div class="col-2">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action" aria-current="true" [routerLink]="[ 'actions' ]" routerLinkActive="active">
+                      Акції
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action" [routerLink]="[ 'categories' ]" routerLinkActive="active">Категорії</a>
+                    <a href="#" class="list-group-item list-group-item-action" [routerLink]="[ 'products' ]" routerLinkActive="active">Товари</a>
+                    <a href="#" class="list-group-item list-group-item-action" [routerLink]="[ 'orders' ]" routerLinkActive="active">Замовлення</a>
+                  </div>
+            </div>
+            <div class="col-10">
+                <router-outlet></router-outlet>
+            </div>
+            
+        </div>
+</div>

@@ -1,0 +1,109 @@
+@import '../../shared/styles/_variables.scss';
+
+footer{
+    margin-top: 60px;
+    border-top: 4px solid #b5d8f7;
+}
+.footer {
+    &-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        margin: 0 25px;
+        padding: 15px 0;
+
+        .brand {
+            img {
+                width: 123px;
+                height: 46px;
+            }
+        }
+
+        .list {
+            .nav-item {
+                margin-left: 55px;
+            }
+            .nav-link {
+                color: black;
+            }
+            .nav-item:nth-child(1) {
+                margin-left: 0;
+            }
+            .nav-link:hover {
+                color: $primary;
+            }
+
+        }
+
+        .info {
+            
+
+            p {
+                height: 21px;
+                margin: 0;
+            }
+            &_second,
+            &_third {
+                margin-left: 20px;
+            }
+        }
+    }
+
+    &-bottom {
+        margin: 0 25px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+
+        .bank-cards {
+            &>div{
+                position: relative;
+                width: 56px;
+                height: 33px;
+                border: 1px solid #dcdcdc;
+                border-radius: 5px;
+                display: inline-block;
+                margin: 0 2.5px;
+                img{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                }
+            }
+        }
+        .social-network{
+            span{
+                margin-right: 20px;
+            }
+            &>div{
+                display: block;
+                width: 40px;
+                height: 40px;
+                background: #b5d8f7;
+                border: 2px solid #b5d8f7;
+                border-radius: 10px;
+                position: relative;
+                transition: 0.35s;
+                cursor: pointer;
+                
+                margin: 0 2.5px;
+                img{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                }
+            }
+            &>div:hover{
+
+                background-color: $secondary;
+            }
+            
+        }
+    }
+
+}

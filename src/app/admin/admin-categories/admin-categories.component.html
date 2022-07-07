@@ -1,0 +1,67 @@
+<div class="a-categories">
+    <ng-container *ngIf="!addStatus">
+        <input type="submit" value="ДОДАТИ КАТЕГОРІЮ" (click)="createCategory()" class="category_button">
+        <table class="table">
+            <thead>
+                <tr>
+                    
+                    <th scope="col">№</th>
+                    <th scope="col">Назва</th>
+                    <th scope="col">Шлях</th>
+                    <th scope="col">Картинка</th>
+                    <th scope="col">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let category of adminCategories">
+                    <td>№ {{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.path }}</td>
+                    <td>
+                        <img [src]="category.imagePath" alt="" width="100px"> 
+                    </td>
+                    <td>
+                        <button (click)="editCategory(category)" type="button" class="button">Edit</button>
+                        <button (click)="deleteCategory(category)" type="button" class="button">Delete</button>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+
+    <ng-container *ngIf="addStatus">
+        <form [formGroup]="categoriesForm" >
+            <button  type="submit" class="category_button  mb-3" [disabled]="categoriesForm.invalid" (click)="addCategory()">
+                {{ editStatus ? 'Зберегти' : 'ДОДАТИ КАТЕГОРІЮ' }}
+            </button>
+            <div class="mb-3">
+                <div class="col-8 d-flex">
+                    <input formControlName="name" name="name" type="text" class="form-control" id="name"
+                        placeholder="Назва">
+                    <input formControlName="path" name="path" type="text" class="form-control" id="path"
+                        placeholder="Шлях">
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="mb-3 d-flex align-items-start flex-column">
+                    <ng-container *ngIf="!isUploaded">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Default file input example</label>
+                            <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="isUploaded" class="d-flex align-items-start">
+                        <img [src]="valueByControl('imagePath')" alt="" width="350px" class="mb-1" >
+                        <button type="button" class="btn btn-danger" (click)="deleteImage()">delete</button>
+                    </ng-container>
+                    
+                </div>
+
+            </div>
+        </form>
+    </ng-container>
+</div>
+
+
+

@@ -1,0 +1,13 @@
+.list-group-item.active {
+    z-index: 2;
+    font-weight: bold;
+    border: none;
+    border-top: 5px solid #b5d8f7;
+    color: black;
+    background-color: white;
+}
+.list-group-item{
+    border-left: none;
+    padding: 20px;
+    text-align: center;
+}

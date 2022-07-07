@@ -1,0 +1,73 @@
+<div class="a-actions">
+    <ng-container *ngIf="!addStatus">
+        <input type="submit" value="ДОДАТИ АКЦІЮ" (click)="createAction()" class="actions_button">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Дата</th>
+                    <th scope="col">Назва</th>
+                    <th scope="col">Заголовок</th>
+                    <th scope="col">Опис</th>
+                    <th scope="col">Картинка</th>
+                    <th scope="col">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let discount of adminActions">
+                    <td>{{ d.getMonth() + '.' + d.getFullYear() }}</td>
+                    <td>{{ discount.name }}</td>
+                    <td>{{ discount.title }}</td>
+                    <td>{{ discount.description }}</td>
+                    <td>
+                        <img [src]="discount.imagePath" alt="" width="100px"> 
+                    </td>
+                    <td>
+                        <button (click)="editAction(discount)" type="button" class="button">Edit</button>
+                        <button (click)="deleteAction(discount)" type="button" class="button">Delete</button>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+
+    <ng-container *ngIf="addStatus">
+        <form [formGroup]="actionsForm" >
+            <button  type="submit" class="actions_button  mb-3" [disabled]="actionsForm.invalid" (click)="addAction()">
+                {{ editStatus ? 'Зберегти' : 'ДОДАТИ АКЦІЮ' }}
+            </button>
+            <div class="mb-3">
+                <div class="col-8 d-flex">
+                    <input formControlName="name" name="name" type="text" class="form-control" id="name"
+                        placeholder="Назва">
+                    <input formControlName="title" name="path" type="text" class="form-control" id="path"
+                        placeholder="Заголовок">
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Опис" id="floatingTextarea2" style="height: 150px"
+                        formControlName="description"></textarea>
+                    <label for="floatingTextarea2">Опис</label>
+                </div>
+                <div class="mb-3 d-flex align-items-start flex-column">
+                    <ng-container *ngIf="!isUploaded">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Default file input example</label>
+                            <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="isUploaded" class="d-flex align-items-start">
+                        <img [src]="valueByControl('imagePath')" alt="" width="350px" class="mb-1" >
+                        <button type="button" class="btn btn-danger" (click)="deleteImage()">delete</button>
+                    </ng-container>
+                    
+                </div>
+
+            </div>
+        </form>
+    </ng-container>
+</div>
+
+
+
