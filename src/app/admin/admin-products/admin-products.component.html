@@ -1,1 +1,110 @@
-<p>admin-products works!</p>
+<div class="a-categories">
+    <ng-container *ngIf="!addStatus">
+        <input type="submit" value="ДОДАТИ ПРОДУКТ" (click)="createProduct()" class="category_button">
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th scope="col">№</th>
+                    <th scope="col">Категорія</th>
+                    <th scope="col">Назва</th>
+                    <th scope="col">Інгредієнт</th>
+                    <th scope="col">Вага</th>
+                    <th scope="col">Ціна</th>
+                    <th scope="col">Картинка</th>
+                    <th scope="col">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of adminProducts">
+                    <td>№ {{ product.id }}</td>
+                    <td>{{ product.category?.name }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.path }}</td>
+                    <td>{{ product.ingredients }}</td>
+                    <td>{{ product.weight }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>
+                        <img [src]="product.imagePath" alt="" width="100px">
+                    </td>
+                    <td>
+                        <button (click)="editProduct(product)" type="button" class="button">Edit</button>
+                        <button (click)="deleteProduct(product)" type="button" class="button">Delete</button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+
+    <ng-container *ngIf="addStatus">
+        <form [formGroup]="productForm">
+            <button type="submit" class="category_button  mb-3" [disabled]="productForm.invalid" (click)="addProduct()">
+                {{ editStatus ? 'Зберегти' : 'ДОДАТИ ПРОДУКТ' }}
+            </button>
+            <div class="mb-3">
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <select formControlName="category" class="form-select">
+
+                                <option [ngValue]="category" *ngFor="let category of adminCategories">{{ category.name
+                                    }}
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <input formControlName="name" name="name" type="text" class="form-control" id="name"
+                                placeholder="Назва">
+                        </div>
+                        <div class="col mb-3">
+                            <input formControlName="path" name="path" type="text" class="form-control" id="path"
+                                placeholder="Шлях">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <input formControlName="ingredients" name="ingredients" type="text" class="form-control"
+                                id="ingredients" placeholder="Інгредієнти">
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col mb-3">
+                            <input formControlName="weight" name="weight" type="text" class="form-control" id="weight"
+                                placeholder="Вага">
+                        </div>
+                        <div class="col mb-3">
+                            <input formControlName="price" name="price" type="text" class="form-control" id="price"
+                                placeholder="Ціна">
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="mb-3 d-flex align-items-start flex-column">
+                    <ng-container *ngIf="!isUploaded">
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Default file input example</label>
+                            <input class="form-control" type="file" id="formFile" (change)="upload($event)">
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="isUploaded" class="d-flex align-items-start">
+                        <img [src]="valueByControl('imagePath')" alt="" width="350px" class="mb-1">
+                        <button type="button" class="btn btn-danger" (click)="deleteImage()">delete</button>
+                    </ng-container>
+
+                </div>
+
+            </div>
+        </form>
+    </ng-container>
+</div>

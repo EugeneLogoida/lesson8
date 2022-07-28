@@ -35,12 +35,12 @@ export class AdminCategoriesComponent implements OnInit {
 
   initCategoriesForm():void{
     this.categoriesForm = this.fb.group({
-      // name: [null, Validators.required],
-      // path: [null, Validators.required],
-      // imagePath: [null, Validators.required]
-      name: [null],
-      path: [null],
-      imagePath: [null]
+      name: [null, Validators.required],
+      path: [null, Validators.required],
+      imagePath: [null, Validators.required]
+      // name: [null],
+      // path: [null],
+      // imagePath: [null]
     })
   }
 

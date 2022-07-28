@@ -6,14 +6,61 @@
       "description": "Щотижня діє знижка 50% на один з ролів",
       "imagePath": "https://firebasestorage.googleapis.com/v0/b/lesson08-60c52.appspot.com/o/images%2Factions%2FModern-office-people-at-desk.jpg?alt=media&token=d49942f8-2190-4fbd-b9f8-f20f66df2dbf",
       "id": 1
+    },
+    {
+      "name": "Вечірня п'ятниця",
+      "title": "Макі зі знижкою в 30%",
+      "description": "Кожної п'ятниці після 18:00 знижка на всі макі 30%",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/lesson08-60c52.appspot.com/o/images%2Factions%2F41461759-people-working-in-a-busy-office.jpg?alt=media&token=8d8c418f-fd09-4c33-88ba-d307bc6814df",
+      "id": 2
     }
   ],
   "categories": [
     {
       "name": "Роли",
       "path": "rolls",
-      "imagePath": "https://firebasestorage.googleapis.com/v0/b/lesson08-60c52.appspot.com/o/images%2Fcategories%2F400_400_max.png?alt=media&token=e3020a8a-49b5-40b9-91f1-64903edb87dc",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/lesson08-60c52.appspot.com/o/images%2Fcategories%2F24342177.jpg?alt=media&token=c3ee20fa-de70-40ba-909e-358908684422",
       "id": 1
+    },
+    {
+      "name": "Сети",
+      "path": "sets",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/lesson08-60c52.appspot.com/o/images%2Fcategories%2F41461759-people-working-in-a-busy-office.jpg?alt=media&token=67d4a95a-886e-4aa5-8f70-993a3fd5d83c",
+      "id": 2
+    }
+  ],
+  "products": [
+    {
+      "category": {
+        "name": "Роли",
+        "path": "rolls",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/lesson08-60c52.appspot.com/o/images%2Fcategories%2F24342177.jpg?alt=media&token=c3ee20fa-de70-40ba-909e-358908684422",
+        "id": 1
+      },
+      "name": "Макі з тунцем",
+      "path": "rolls",
+      "ingredients": "Рис, норі, тунець",
+      "weight": "120 г",
+      "price": "73 грн",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/lesson08-60c52.appspot.com/o/images%2Fproducts%2F400_400_max.png?alt=media&token=7d55fd6f-7c8a-4342-a264-f01a25e19b7e",
+      "count": 1,
+      "id": 1
+    },
+    {
+      "category": {
+        "name": "Роли",
+        "path": "rolls",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/lesson08-60c52.appspot.com/o/images%2Fcategories%2F24342177.jpg?alt=media&token=c3ee20fa-de70-40ba-909e-358908684422",
+        "id": 1
+      },
+      "name": "Макі з огірком",
+      "path": "rolls",
+      "ingredients": " Рис, норі, огірок",
+      "weight": "120 г",
+      "price": "105 грн",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/lesson08-60c52.appspot.com/o/images%2Fproducts%2Fd2io.jpg?alt=media&token=5533f8ce-49e3-439a-a55e-4ddfe8d1fbfd",
+      "count": 1,
+      "id": 2
     }
   ]
 }

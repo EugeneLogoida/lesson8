@@ -8,3 +8,75 @@
 
     </div>
 </div>
+<div class="container">
+
+    <div class="row">
+        <div class="col-12">
+            <!-- <div class="list-group d-flex">
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true"
+                    [routerLink]="[ 'actions' ]" routerLinkActive="active">
+                    Акції
+                </a>
+                <a href="#" class="list-group-item list-group-item-action" [routerLink]="[ 'categories' ]"
+                    routerLinkActive="active">Категорії</a>
+                <a href="#" class="list-group-item list-group-item-action" [routerLink]="[ 'products' ]"
+                    routerLinkActive="active">Товари</a>
+                <a href="#" class="list-group-item list-group-item-action" [routerLink]="[ 'orders' ]"
+                    routerLinkActive="active">Замовлення</a>
+            </div> -->
+            <ul class="nav justify-content-between mb-3" style="font-size:20px;">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Всі</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Філадельфія</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Каліфорнія</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Запечені</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Фірмові</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Макі</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Преміум</a>
+                </li>
+            </ul>
+        </div>
+        <!-- <div class="col-10">
+                <router-outlet></router-outlet>
+            </div> -->
+
+    </div>
+    <div class="row">
+        <ng-container *ngFor="let product of productsList" class="actions_block">
+            <div class="card mx-2" style="width: 18rem;">
+                <img [src]="product.imagePath" class="card-img-top" style="height: 18rem;">
+                <div class="card-body">
+                    <p class="card-text text-center fw-bold">{{ product.name }}</p>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="card-text">{{ product.ingredients }}</span>
+                        <span class="card-text text-secondary fw-bold">{{ product.weight }}</span>
+
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center ">
+                        <span class="card-text ">{{ product.price }}</span>
+                        
+                            <input type="button" value="-" (click)="qChange(false, product)" class="plusminus">
+                            <span> {{ product.count }} </span>
+                            <input type="button" value="+" (click)="qChange(true, product)" class="plusminus">
+                        
+                        <input type="button" value="ЗАМОВИТИ" class="order">
+                    </div>
+
+                    
+                </div>
+            </div>
+    </ng-container>
+    </div>
+</div>
