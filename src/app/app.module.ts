@@ -25,6 +25,8 @@ import { OffertaComponent } from './pages/offerta/offerta.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { ActionsInfoComponent } from './pages/actions-info/actions-info.component';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     AdminOrdersComponent,
     ProductsComponent,
     AdminComponent,
-    OffertaComponent
+    OffertaComponent,
+    ActionsInfoComponent,
+    ProductInfoComponent
   ],
   imports: [
     BrowserModule,

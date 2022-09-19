@@ -8,6 +8,8 @@
 
     </div>
 </div>
+
+
 <div class="container">
 
     <div class="row">
@@ -55,23 +57,23 @@
     </div>
     <div class="row">
         <ng-container *ngFor="let product of productsList" class="actions_block">
-            <div class="card mx-2" style="width: 18rem;">
-                <img [src]="product.imagePath" class="card-img-top" style="height: 18rem;">
+            <div class="card mx-2 mb-3" style="width: 18rem;">
+                <img [routerLink]="[ '/product/'+product.category.path, product.id ]" [src]="product.imagePath" class="card-img-top" style="height: 18rem;">
                 <div class="card-body">
-                    <p class="card-text text-center fw-bold">{{ product.name }}</p>
+                    <p [routerLink]="[ '/product/'+product.category.path, product.id ]" class="card-text text-center fw-bold">{{ product.name }}</p>
                     <div class="d-flex justify-content-between mb-2">
                         <span class="card-text">{{ product.ingredients }}</span>
-                        <span class="card-text text-secondary fw-bold">{{ product.weight }}</span>
+                        <span class="card-text text-secondary fw-bold">{{ product.weight }}г.</span>
 
                     </div>
                     <div class="d-flex justify-content-between align-items-center ">
-                        <span class="card-text ">{{ product.price }}</span>
+                        <span class="card-text ">{{ product.count * product.price }}грн.</span>
                         
                             <input type="button" value="-" (click)="qChange(false, product)" class="plusminus">
                             <span> {{ product.count }} </span>
                             <input type="button" value="+" (click)="qChange(true, product)" class="plusminus">
                         
-                        <input type="button" value="ЗАМОВИТИ" class="order">
+                        <input type="button" value="ЗАМОВИТИ" class="order" (click)="addToBasket(product)">
                     </div>
 
                     

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="dot-links d-flex">
+      <a [routerLink]="[ '/']">Головна </a>
+      <span> &#8226;</span>
+      <a [routerLink]="[ '/product/'+currentProduct.category.path]"> {{currentProduct.category.name}} </a>
+      <span> &#8226;</span>
+      <!-- <a>{{currentProduct.}}</a> -->
+      <a>{{currentProduct.name}}</a>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="card mb-3 col-8 m-auto">
+      <div class="row g-0">
+        <div class="col-md-7">
+          <img [src]="currentProduct.imagePath" class=" rounded-start" alt="..." height="100%" width="100%">
+        </div>
+        <div class="col-md-5 card-info">
+          <div class="card-body">
+            <h5 class="card-title">{{currentProduct.name}}</h5>
+            <p class="card-text"><span class="blue-color">Cклад: </span>{{ currentProduct.ingredients }}</p>
+            <p class="card-text"><span class="blue-color">Вага: </span>{{ currentProduct.weight }} г</p>
+            <div class="d-flex justify-content-between align-items-center ">
+              <span class="card-text ">{{ currentProduct.count * currentProduct.price }}грн.</span>
+
+              <input type="button" value="-" (click)="qChange(false, currentProduct)" class="plusminus">
+              <span> {{ currentProduct.count }} </span>
+              <input type="button" value="+" (click)="qChange(true, currentProduct)" class="plusminus">
+
+              <input type="button" value="ЗАМОВИТИ" class="order" (click)="addToBasket(currentProduct)">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+@import '../../shared/styles/_variables.scss';
+
+.dot-links{
+    margin: 20px 0;
+    a{
+        color: rgb(74, 74, 74);
+        text-decoration: none;
+        &:hover{
+            color: rgb(14, 14, 14);
+        }
+    }
+    span{
+        margin: 0 10px;
+    }
+}
+
+.blue-block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    font-size: 38px;
+    text-decoration: overline;
+    background-color: $primary;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-bottom: 55px !important;
+}
+.card{
+    border: none
+}

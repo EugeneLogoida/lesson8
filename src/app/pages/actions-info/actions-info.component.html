@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row col-8">
+        <div class="dot-links d-flex ">
+            <a [routerLink]="[ '/']">Головна </a>
+            <span> &#8226;</span>
+            <a [routerLink]="[ '/actions']">Акції </a>
+            <span> &#8226;</span>
+            <a [routerLink]="[ '/actions', currentAction.id+1]">{{currentAction.name}}</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="card mb-3 col-8 m-auto">
+            <div class="row">
+              <!-- <div class="col-md-4">
+                <img [src]="currentAction.imagePath" class="img-fluid rounded-start" alt="...">
+              </div> -->
+              <div class="">
+                <div class="card-body">
+                  <h5 class="card-title blue-block m-auto">{{currentAction.name}}</h5>
+                  <p class="card-text">{{currentAction.description}}</p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</div>

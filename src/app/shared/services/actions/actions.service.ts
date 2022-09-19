@@ -20,6 +20,7 @@ export class ActionsService {
   getOne(id: number): Observable<IActionsResponse> {
     return this.http.get<IActionsResponse>(`${this.api.actions}/${id}`);
   }
+
   create(discount: IActionsRequest): Observable<IActionsResponse> {
     return this.http.post<IActionsResponse>(this.api.actions, discount);
   }

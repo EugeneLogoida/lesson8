@@ -14,12 +14,24 @@ import { AdminActionsComponent } from './admin/admin-actions/admin-actions.compo
 import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
+import { ProductInfoComponent } from './pages/product-info/product-info.component';
+import { ActionsInfoComponent } from './pages/actions-info/actions-info.component';
+import { ActionsInfoResolver } from './shared/services/actions/actions-info.resolver';
+import { ActionsService } from './shared/services/actions/actions.service';
+import { ProductInfoResolver } from './shared/services/products/product-info.resolver';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'actions', component: ActionsComponent },
-  { path: 'product/:category', component: ProductsComponent },
+  { path: 'actions/:id', component: ActionsInfoComponent, resolve: 
+    {
+      actionsInfo: ActionsInfoResolver
+    } 
+  },
+  { path: 'product', pathMatch: 'full', redirectTo: 'product/rolls'  },
+  { path: 'product/:category', component: ProductsComponent},
+  { path: 'product/:category/:id', component: ProductInfoComponent, resolve:{ productsInfo:ProductInfoResolver } },
   { path: 'delivery-and-payment', component: DeliveryAndPaymentComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'offerta', component: OffertaComponent },

@@ -1,48 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IProductsResponse } from 'src/app/shared/interfaces/products/products.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
-import { ProductsService } from 'src/app/shared/services/products/products.service';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-product-info',
+  templateUrl: './product-info.component.html',
+  styleUrls: ['./product-info.component.scss']
 })
-export class ProductsComponent implements OnInit {
-  // public quantity = 1;
+export class ProductInfoComponent implements OnInit {
+  public currentProduct!:IProductsResponse;
 
-
-  public productsList: Array<IProductsResponse> = [];
   constructor(
-    private productsService: ProductsService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
+    private activatedRoute: ActivatedRoute, 
     private orderService: OrderService
-  ) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.loadProducts()
-      }
-    })
-  }
+    ) { }
 
   ngOnInit(): void {
-    // this.loadProducts();
-
-
-  }
-
-  loadProducts(): void {
-    // const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    
-    // this.productsService.getAllByCategory(categoryName).subscribe(data =>
-    //   this.productsList = data)
-    this.productsService.getAll().subscribe(data=>{
-      this.productsList = data
+    this.activatedRoute.data.subscribe(response =>{
+      this.currentProduct = response['productsInfo']
     })
+    console.log();
+    
   }
-
   qChange(b: boolean, product: IProductsResponse): void {
     if (b) {
       product.count++
@@ -67,4 +47,5 @@ export class ProductsComponent implements OnInit {
     product.count = 1;
     this.orderService.changeBasket.next(true);
   }
+
 }
