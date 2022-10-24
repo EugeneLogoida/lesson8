@@ -27,6 +27,8 @@ import { environment } from '../environments/environment';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { ActionsInfoComponent } from './pages/actions-info/actions-info.component';
 import { ProductInfoComponent } from './pages/product-info/product-info.component';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { ProductInfoComponent } from './pages/product-info/product-info.componen
     AdminComponent,
     OffertaComponent,
     ActionsInfoComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    AuthorizationComponent,
+    CabinetComponent
   ],
   imports: [
     BrowserModule,

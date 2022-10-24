@@ -1,0 +1,20 @@
+<ng-container>
+    <form [formGroup]="authForm" >
+        <div class=" mt-4">
+            <div class="col-4 m-auto">
+                <input formControlName="email" name="email" type="email" class="form-control mb-4" id="email"
+                    placeholder="email">
+                <input formControlName="password" name="password" type="password" class="form-control" id="password"
+                    placeholder="password">
+            </div>
+            
+            <div class="col-4 m-auto">
+                <button  type="submit" class="actions_button col-12 m-auto mt-5" [disabled]="authForm.invalid" (click)="login()">
+                    Login
+                </button>
+
+            </div>
+        </div>
+        
+    </form>
+</ng-container>

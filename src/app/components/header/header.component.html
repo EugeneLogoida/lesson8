@@ -84,11 +84,28 @@
                         <p>Працюємо з 11:00 до 21:30</p>
                     </li>
 
-                    <li class="nav-item">
-                        <a [routerLink]="[ '/admin' ]" routerLinkActive="route-active" class="nav-link"
+                    <li class="nav-item" *ngIf="!isLogin">
+                        <a [routerLink]="[ '/auth' ]" routerLinkActive="route-active" class="nav-link"
                             aria-current="page">
                             <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""
                                 oncontextmenu="return false">
+
+                        </a>
+                        
+                        
+                    </li>
+                    <li class="nav-item" *ngIf="isLogin">
+                        <a [routerLink]="[ '/'+loginUrl ]" routerLinkActive="route-active" class="nav-link"
+                            aria-current="page">
+                            <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""
+                                oncontextmenu="return false">
+                                {{ loginPage }}
+
+                        </a>
+                        <a routerLinkActive="route-active" class="nav-link" (click)="logout()"
+                            aria-current="page">
+                           
+                                Logout
 
                         </a>
                     </li>

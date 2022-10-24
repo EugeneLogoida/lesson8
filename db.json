@@ -122,5 +122,21 @@
       "count": 1,
       "id": 5
     }
+  ],
+  "auth": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "fullName": "Administrator", 
+      "role": "ADMIN"
+    },
+    {
+      "id": 2,
+      "email": "user@gmail.com",
+      "password": "user",
+      "fullName": "Userenko", 
+      "role": "USER"
+    }
   ]
 }

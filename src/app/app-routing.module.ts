@@ -19,6 +19,10 @@ import { ActionsInfoComponent } from './pages/actions-info/actions-info.componen
 import { ActionsInfoResolver } from './shared/services/actions/actions-info.resolver';
 import { ActionsService } from './shared/services/actions/actions.service';
 import { ProductInfoResolver } from './shared/services/products/product-info.resolver';
+import { AuthGuard } from './shared/guards/auth/auth.guard';
+import { AuthorizationComponent } from './pages/authorization/authorization.component';
+import { CabinetComponent } from './pages/cabinet/cabinet.component';
+import { AuthUserGuard } from './shared/guards/auth/auth-user.guard';
 
 
 const routes: Routes = [
@@ -35,7 +39,9 @@ const routes: Routes = [
   { path: 'delivery-and-payment', component: DeliveryAndPaymentComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'offerta', component: OffertaComponent },
-  { path: 'admin', component: AdminComponent, children: [
+  { path: 'auth', component: AuthorizationComponent },
+  { path: 'cabinet', component: CabinetComponent, canActivate: [AuthUserGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] , children: [
     { path: 'actions', component: AdminActionsComponent },
     { path: 'products', component: AdminProductsComponent },
     { path: 'categories', component: AdminCategoriesComponent },

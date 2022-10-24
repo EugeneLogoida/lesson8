@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { reduce } from 'rxjs';
+import { Router } from '@angular/router';
+import { ROLE } from 'src/app/shared/constants/roles.constant';
 import { IProductsResponse } from 'src/app/shared/interfaces/products/products.interface';
+import { AccountService } from 'src/app/shared/services/account/account.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 
 @Component({
@@ -14,13 +16,21 @@ export class HeaderComponent implements OnInit {
   public total = 0;
   public showItems:boolean = false
 
+  public isLogin = false;
+  public loginUrl = '';
+  public loginPage = ''
+
   constructor(
-    private orderService: OrderService
+    private orderService: OrderService,
+    private accountService: AccountService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.loadBasket();
     this.updateBasket();
+    this.checkUserLogin();
+    this.checkUpdatesUserLogin()
     console.log(this.basket);
     
   }
@@ -52,6 +62,34 @@ export class HeaderComponent implements OnInit {
     } else {
       if (product.count > 1) product.count--
     }
+  }
+
+  checkUserLogin():void{
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
+    if(currentUser && currentUser.role === ROLE.ADMIN){
+      this.isLogin = true;
+      this.loginUrl = 'admin';
+      this.loginPage = 'Admin';
+    } else if (currentUser && currentUser.role == ROLE.USER){
+      this.isLogin = true;
+      this.loginUrl = 'cabinet';
+      this.loginPage = 'Cabinet';
+    } else {
+      this.isLogin = false;
+      this.loginUrl = '';
+      this.loginPage = '';
+    }
+  }
+  checkUpdatesUserLogin():void{
+    this.accountService.isUserLogin$.subscribe(()=>{
+      this.checkUserLogin()
+    })
+  }
+
+  logout():void{
+    this.router.navigate(['/']);
+    localStorage.removeItem('currentUser');
+    this.accountService.isUserLogin$.next(true);
   }
 
 }
