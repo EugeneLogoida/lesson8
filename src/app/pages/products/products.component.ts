@@ -28,19 +28,19 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.loadProducts();
+    this.loadProducts();
 
 
   }
 
   loadProducts(): void {
-    // const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
+    const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
     
-    // this.productsService.getAllByCategory(categoryName).subscribe(data =>
-    //   this.productsList = data)
-    this.productsService.getAll().subscribe(data=>{
-      this.productsList = data
-    })
+    this.productsService.getAllByCategory(categoryName).subscribe(data =>
+      this.productsList = data)
+    // this.productsService.getAll().subscribe(data=>{
+    //   this.productsList = data
+    // })
   }
 
   qChange(b: boolean, product: IProductsResponse): void {

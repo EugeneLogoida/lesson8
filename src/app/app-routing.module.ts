@@ -23,6 +23,8 @@ import { AuthGuard } from './shared/guards/auth/auth.guard';
 import { AuthorizationComponent } from './pages/authorization/authorization.component';
 import { CabinetComponent } from './pages/cabinet/cabinet.component';
 import { AuthUserGuard } from './shared/guards/auth/auth-user.guard';
+import { UserDataComponent } from './pages/cabinet/user-data/user-data.component';
+import { OrderHistoryComponent } from './pages/cabinet/order-history/order-history.component';
 
 
 const routes: Routes = [
@@ -40,7 +42,11 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'offerta', component: OffertaComponent },
   { path: 'auth', component: AuthorizationComponent },
-  { path: 'cabinet', component: CabinetComponent, canActivate: [AuthUserGuard] },
+  { path: 'cabinet', component: CabinetComponent, canActivate: [AuthUserGuard], children:[
+    {path: 'user-data', component: UserDataComponent },
+    {path: 'order-history', component: OrderHistoryComponent },
+    { path: '', pathMatch: 'full', redirectTo: 'user-data' }
+  ] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] , children: [
     { path: 'actions', component: AdminActionsComponent },
     { path: 'products', component: AdminProductsComponent },

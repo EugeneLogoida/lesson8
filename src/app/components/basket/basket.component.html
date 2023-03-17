@@ -1,0 +1,35 @@
+<div class="itemsBasketBlock">
+    <ng-container *ngIf="basket.length==0">
+        <div class="text-center empty">
+            <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/icons/cart-empty-img.svg" alt="">
+            <h2>There is nothing here...</h2>
+        </div>
+    </ng-container>
+    
+    <ng-container *ngFor="let item of basket">
+        <div class="d-flex justify-content-around one-item align-items-center">
+            <div class="image d-flex justify-content-center">
+
+                <img [src]="item.imagePath" alt="" srcset="" height="100%">
+            </div>
+            <p class=" name">{{ item.name }}</p>
+            <div class="d-flex justify-content-between align-items-center buttons">
+
+                <input type="button" value="-" (click)="qChange(false, item)" class="plusminus">
+                <span> {{ item.count }} </span>
+                <input type="button" value="+" (click)="qChange(true, item)" class="plusminus">
+                <span class="card-text ">{{ item.count * item.price }}грн.</span>
+
+            </div>
+            <div class="trash">
+                <img src="https://cdn-icons-png.flaticon.com/512/3481/3481306.png" alt="" height="100%" width="100%">
+            </div>
+        </div>
+        
+        
+    </ng-container>
+    <div class="basket-bottom d-flex justify-content-around align-items-center">
+        <p>Cума: {{ total }} грн</p>
+        <input type="button" value="ОФОРМИТИ ЗАМОВЛЕННЯ" class="order-btn">
+    </div>
+</div>

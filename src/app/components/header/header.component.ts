@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ROLE } from 'src/app/shared/constants/roles.constant';
 import { IProductsResponse } from 'src/app/shared/interfaces/products/products.interface';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
+import { BasketComponent } from '../basket/basket.component';
 
 @Component({
   selector: 'app-header',
@@ -14,37 +17,43 @@ export class HeaderComponent implements OnInit {
 
   public basket: Array<IProductsResponse> = [];
   public total = 0;
-  public showItems:boolean = false
+  public showBasket = false
+  public showItems = true
 
   public isLogin = false;
   public loginUrl = '';
   public loginPage = ''
 
   constructor(
-    private orderService: OrderService,
     private accountService: AccountService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog,
+    private orderService: OrderService
   ) { }
 
   ngOnInit(): void {
-    this.loadBasket();
-    this.updateBasket();
     this.checkUserLogin();
+    this.loadBasket()
     this.checkUpdatesUserLogin()
-    console.log(this.basket);
+    this.updateBasket();
+    // console.log(this.basket);
     
   }
 
   loadBasket():void{
     if(localStorage.length > 0 && localStorage.getItem('basket')){
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
+      console.log(this.basket);
+      
       
     }
     this.getTotalPrice()
   }
   getTotalPrice():void{
     this.total = this.basket.
-    reduce((total:number, prod:IProductsResponse)=> total + prod.count * prod.price, 0)
+    reduce((total:number, prod:IProductsResponse)=> total + prod.count * prod.price, 0);
+    console.log(this.total);
+    
   }
 
   updateBasket():void{
@@ -56,13 +65,13 @@ export class HeaderComponent implements OnInit {
   showBasketItems():void{
     this.showItems = !this.showItems
   }
-  qChange(b: boolean, product: IProductsResponse): void {
-    if (b) {
-      product.count++
-    } else {
-      if (product.count > 1) product.count--
-    }
-  }
+  // qChange(b: boolean, product: IProductsResponse): void {
+  //   if (b) {
+  //     product.count++
+  //   } else {
+  //     if (product.count > 1) product.count--
+  //   }
+  // }
 
   checkUserLogin():void{
     const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
@@ -92,4 +101,30 @@ export class HeaderComponent implements OnInit {
     this.accountService.isUserLogin$.next(true);
   }
 
+  openLoginDialog():void{
+    this.dialog.open(AuthDialogComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'auth-dialog'
+    }).afterClosed().subscribe(result =>{
+      console.log(result);
+      
+    })
+  }
+
+  openBasketDialog(): void{
+    this.showBasket = !this.showBasket;
+    this.orderService.changeBasket.next(true);
+    if(this.showBasket){
+      this.dialog.open(BasketComponent, {
+        backdropClass: 'basket-back',
+        panelClass: 'basket-dialog',
+        position: {top: '95px', right:'0px'},
+        
+      }).afterClosed().subscribe(()=>{
+        this.showBasket = false
+      })
+    } else{
+      this.dialog.closeAll()
+    }
+  }
 }
