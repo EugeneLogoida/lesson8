@@ -73,7 +73,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a routerLinkActive="route-active" class="nav-link phone" aria-current="page">
+                        <a (click)="openWeCallDialog()" routerLinkActive="route-active" class="nav-link phone" aria-current="page">
                             <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt=""
                                 oncontextmenu="return false">
                         </a>
@@ -97,8 +97,8 @@
                                 oncontextmenu="return false">
 
                         </a>
-                        
-                        
+
+
                     </li>
                     <li class="nav-item" *ngIf="isLogin">
                         <a [routerLink]="[ '/'+loginUrl ]" routerLinkActive="route-active" class="nav-link"
@@ -110,7 +110,7 @@
                         </a>
                         <a routerLinkActive="route-active" class="nav-link" (click)="logout()"
                             aria-current="page">
-                           
+
                                 Logout
 
                         </a>
@@ -129,7 +129,7 @@
 </header>
 
 <!-- <div *ngIf="showItems" class="blur">
-    
+
     <div class="itemsBasketBlock">
         <ng-container *ngFor="let item of basket">
             <div class="d-flex justify-content-around one-item align-items-center">
@@ -150,8 +150,8 @@
                     <img src="https://cdn-icons-png.flaticon.com/512/3481/3481306.png" alt="" height="100%" width="100%">
                 </div>
             </div>
-            
-            
+
+
         </ng-container>
         <div class="basket-bottom d-flex justify-content-around align-items-center">
             <p>Cума: {{ total }} грн</p>

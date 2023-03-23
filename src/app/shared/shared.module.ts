@@ -11,13 +11,22 @@ const MATERIAL = [
     MatButtonModule
 ]
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
     declarations:[],
     imports:[
-        ...MATERIAL
+        ...MATERIAL,
+      FormsModule,
+      ReactiveFormsModule,
+      HttpClientModule
     ],
     exports:[
-        ...MATERIAL
+        ...MATERIAL,
+      FormsModule,
+      ReactiveFormsModule,
+      HttpClientModule
     ]
 })
 export class SharedModule {  }

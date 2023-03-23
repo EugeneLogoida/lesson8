@@ -2,21 +2,23 @@
 
 <div style="height: 40px;"></div>
 <div class="container">
-    
+
         <div class="row">
-            <div class="col-8 d-flex m-auto">
-                <div class="col-3">
+            <div class="col-12 d-flex m-auto">
+                <div class="col-2">
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action" aria-current="true" [routerLink]="[ 'user-data' ]" routerLinkActive="active">
                           Особисті дані
                         </a>
                         <a href="#" class="list-group-item list-group-item-action" [routerLink]="[ 'order-history' ]" routerLinkActive="active">Історія замовлень</a>
+
+                        <a href="#" class="list-group-item list-group-item-action" [routerLink]="[ 'password-change' ]" routerLinkActive="active">Зміна паролю</a>
                       </div>
                 </div>
-                <div class="col-9">
+                <div class="col-10">
                     <router-outlet></router-outlet>
                 </div>
             </div>
-            
+
         </div>
 </div>

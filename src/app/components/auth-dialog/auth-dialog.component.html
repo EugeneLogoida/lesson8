@@ -13,9 +13,12 @@
                 <input matInput type="password" formControlName="password">
             </mat-form-field>
         </div>
-        <button mat-flat-button color="primary" (click)="loginUser()" class="fw-bold" mat-dialog-close [disabled]="!authForm.value.email || !authForm.value.password">Увійти в кабінет</button>
+        <button mat-flat-button color="primary" (click)="loginUser()" class="fw-bold" mat-dialog-close [disabled]="authForm.invalid">Увійти в кабінет</button>
         <button mat-button (click)="changeIsLogin()" class="fw-bold">Зареєсруватись</button>
     </div>
+
+</form>
+<form [formGroup]="registerForm">
     <div *ngIf="!isLogin" class="form-group">
 
         <h3 class="fw-bold">Вхід в кабінет</h3>
@@ -38,22 +41,30 @@
         <div class="form-group-s">
             <mat-form-field appearance="outline" color="primary">
                 <mat-label>Ваш email</mat-label>
-                
+
                 <input matInput type="email" formControlName="email">
             </mat-form-field>
         </div>
         <div class="form-group-s">
+
+
             <mat-form-field appearance="outline" color="primary">
-                <mat-label>Пароль</mat-label>
-                <input matInput type="password" formControlName="password">
+              <mat-label>Пароль</mat-label>
+              <input matInput type="password" formControlName="password">
             </mat-form-field>
-        </div>
-        
-        <button mat-flat-button color="primary" (click)="registerUser()" [disabled]="authForm.invalid" class="fw-bold">Зареєсруватись</button>
-        <div class="">
+
+
+          <mat-form-field appearance="outline" color="primary">
+              <mat-label>Повторіть пароль</mat-label>
+              <input (input)="checkConfirmedPassword()" matInput type="password" formControlName="confirmedPassword">
+            </mat-form-field>
+          </div>
+      <mat-error *ngIf="checkVisibilityError('confirmedPassword', 'matchError')">Паролі не співпадають</mat-error>
+
+      <button mat-flat-button color="primary" (click)="registerUser()" [disabled]="registerForm.invalid" class="fw-bold" mat-dialog-close>Зареєсруватись</button>
+          <div class="">
             <span style="margin-top: 10px;" >Вже зареєстровані?</span>
             <button class="enter-btn fw-bold" mat-button (click)="changeIsLogin()" >Увійти</button>
-
+          </div>
         </div>
-    </div>
 </form>

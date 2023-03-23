@@ -1,59 +1,49 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './pages/home/home.component';
-import { ActionsComponent } from './pages/actions/actions.component';
-import { AboutUsComponent } from './pages/about-us/about-us.component';
-import { DeliveryAndPaymentComponent } from './pages/delivery-and-payment/delivery-and-payment.component';
-import { ProductsComponent } from './pages/products/products.component';
-
-import { OffertaComponent } from './pages/offerta/offerta.component';
-
-import { AdminComponent } from './admin/admin.component'; 
-import { AdminActionsComponent } from './admin/admin-actions/admin-actions.component';
-import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { ProductInfoComponent } from './pages/product-info/product-info.component';
-import { ActionsInfoComponent } from './pages/actions-info/actions-info.component';
-import { ActionsInfoResolver } from './shared/services/actions/actions-info.resolver';
-import { ActionsService } from './shared/services/actions/actions.service';
-import { ProductInfoResolver } from './shared/services/products/product-info.resolver';
-import { AuthGuard } from './shared/guards/auth/auth.guard';
-import { AuthorizationComponent } from './pages/authorization/authorization.component';
-import { CabinetComponent } from './pages/cabinet/cabinet.component';
-import { AuthUserGuard } from './shared/guards/auth/auth-user.guard';
-import { UserDataComponent } from './pages/cabinet/user-data/user-data.component';
-import { OrderHistoryComponent } from './pages/cabinet/order-history/order-history.component';
-
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'actions', component: ActionsComponent },
-  { path: 'actions/:id', component: ActionsInfoComponent, resolve: 
-    {
-      actionsInfo: ActionsInfoResolver
-    } 
+
+  { path: '',
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+
   },
-  { path: 'product', pathMatch: 'full', redirectTo: 'product/rolls'  },
-  { path: 'product/:category', component: ProductsComponent},
-  { path: 'product/:category/:id', component: ProductInfoComponent, resolve:{ productsInfo:ProductInfoResolver } },
-  { path: 'delivery-and-payment', component: DeliveryAndPaymentComponent },
-  { path: 'about-us', component: AboutUsComponent },
-  { path: 'offerta', component: OffertaComponent },
-  { path: 'auth', component: AuthorizationComponent },
-  { path: 'cabinet', component: CabinetComponent, canActivate: [AuthUserGuard], children:[
-    {path: 'user-data', component: UserDataComponent },
-    {path: 'order-history', component: OrderHistoryComponent },
-    { path: '', pathMatch: 'full', redirectTo: 'user-data' }
-  ] },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] , children: [
-    { path: 'actions', component: AdminActionsComponent },
-    { path: 'products', component: AdminProductsComponent },
-    { path: 'categories', component: AdminCategoriesComponent },
-    { path: 'orders', component: AdminOrdersComponent },
-    { path: '', pathMatch: 'full', redirectTo: 'actions' }
-  ] },
+  {
+    path: 'about-us',
+    loadChildren: () => import('./pages/about-us/about-us.module').then(m => m.AboutUsModule)
+  },
+  {
+    path: 'actions',
+    loadChildren: () => import('./pages/actions/actions.module').then(m => m.ActionsModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./pages/authorization/authorization.module').then(m => m.AuthorizationModule)
+  },
+  {
+    path: 'cabinet',
+    loadChildren: () => import('./pages/cabinet/cabinet.module').then(m => m.CabinetModule)
+  },
+  {
+    path: 'delivery-and-payment',
+    loadChildren: () => import('./pages/delivery-and-payment/delivery-and-payment.module')
+      .then(m => m.DeliveryAndPaymentModule)
+  },
+  {
+    path: 'offerta',
+    loadChildren: () => import('./pages/offerta/offerta.module').then(m => m.OffertaModule)
+  },
+  {
+    path: 'product',
+    loadChildren: () => import('./pages/products/products.module').then(m => m.ProductsModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+
+
+
 ];
 
 @NgModule({

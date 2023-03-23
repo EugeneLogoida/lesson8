@@ -7,6 +7,7 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 import { BasketComponent } from '../basket/basket.component';
+import {WeCallComponent} from "../we-call/we-call.component";
 
 @Component({
   selector: 'app-header',
@@ -37,15 +38,15 @@ export class HeaderComponent implements OnInit {
     this.checkUpdatesUserLogin()
     this.updateBasket();
     // console.log(this.basket);
-    
+
   }
 
   loadBasket():void{
     if(localStorage.length > 0 && localStorage.getItem('basket')){
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
       console.log(this.basket);
-      
-      
+
+
     }
     this.getTotalPrice()
   }
@@ -53,7 +54,7 @@ export class HeaderComponent implements OnInit {
     this.total = this.basket.
     reduce((total:number, prod:IProductsResponse)=> total + prod.count * prod.price, 0);
     console.log(this.total);
-    
+
   }
 
   updateBasket():void{
@@ -65,13 +66,6 @@ export class HeaderComponent implements OnInit {
   showBasketItems():void{
     this.showItems = !this.showItems
   }
-  // qChange(b: boolean, product: IProductsResponse): void {
-  //   if (b) {
-  //     product.count++
-  //   } else {
-  //     if (product.count > 1) product.count--
-  //   }
-  // }
 
   checkUserLogin():void{
     const currentUser = JSON.parse(localStorage.getItem('currentUser') as string);
@@ -107,7 +101,7 @@ export class HeaderComponent implements OnInit {
       panelClass: 'auth-dialog'
     }).afterClosed().subscribe(result =>{
       console.log(result);
-      
+
     })
   }
 
@@ -119,12 +113,21 @@ export class HeaderComponent implements OnInit {
         backdropClass: 'basket-back',
         panelClass: 'basket-dialog',
         position: {top: '95px', right:'0px'},
-        
+
       }).afterClosed().subscribe(()=>{
         this.showBasket = false
       })
     } else{
       this.dialog.closeAll()
     }
+  }
+
+
+  openWeCallDialog(): void{
+    this.dialog.open(WeCallComponent, {
+      backdropClass: 'dialog-back',
+      panelClass: 'auth-dialog'
+    })
+
   }
 }
