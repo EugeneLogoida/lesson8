@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { doc, docData, Firestore } from '@angular/fire/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { setDoc } from '@firebase/firestore';
 import { Subscription } from 'rxjs';
 import { ROLE } from 'src/app/shared/constants/roles.constant';
 import { AccountService } from 'src/app/shared/services/account/account.service';
@@ -32,9 +31,11 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.loginSubscription.unsubscribe()
+    if(this.loginSubscription){
+      this.loginSubscription.unsubscribe()
+    }
   }
-  
+
   initAuthForm():void{
     this.authForm = this.fb.group({
       email: [null, [Validators.required]],
@@ -47,7 +48,7 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
       console.log('login done');
     }).catch(e => {
       console.log('login error', e);
-      
+
     })
   }
 
@@ -55,15 +56,16 @@ export class AuthorizationComponent implements OnInit, OnDestroy {
   const credential = await signInWithEmailAndPassword(this.auth, email, password);
   console.log(credential.user.uid);
   this.loginSubscription = docData(doc(this.afs, 'users', credential.user.uid)).subscribe(user => {
-    
+
     const currentUser = {...user, uid: credential.user.uid};
+    console.log(currentUser);
     localStorage.setItem('currentUser', JSON.stringify(currentUser));
     if(user && user.role === ROLE.USER){
       this.router.navigate(['/cabinet'])
     } else if(user && user.role === ROLE.ADMIN) {
       this.router.navigate(['/admin'])
     }
-    
+
     this.accountService.isUserLogin$.next(true);
     console.log('user', user);
   }, (e) => {

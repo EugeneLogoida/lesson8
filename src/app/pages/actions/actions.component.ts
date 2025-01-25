@@ -1,9 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { ActionsService } from 'src/app/shared/services/actions/actions.service';
-import { environment } from 'src/environments/environment';
-
 import { IActionsResponse } from '../../shared/interfaces/actions/actions.interface';
 
 @Component({
@@ -23,20 +19,20 @@ export class ActionsComponent implements OnInit {
   ngOnInit(): void {
 
     this.loadActions();
-    
-    
+
+
   }
 
   loadActions():void{
     this.actionsService.getAll().subscribe(data=>
-      this.actionsList = data 
+      this.actionsList = data
   )}
-  
+
   // getAct(): void{
   //   this.list = this.act.getAll().subscribe(data=>
   //     this.list.data);
-    
-    
+
+
 
   // }
 

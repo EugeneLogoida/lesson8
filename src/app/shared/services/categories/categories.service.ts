@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { collection, CollectionReference, DocumentData, Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ICategoriesRequest, ICategoriesResponse } from '../../interfaces/categories/categories.interface';
@@ -12,7 +13,16 @@ export class CategoriesService {
   private url = environment.BACKEND_URL;
   private api = { categories: `${this.url}/categories` };
 
-  constructor(private http:HttpClient) { }
+
+  private categoryCollection!: CollectionReference<DocumentData>;
+
+
+  constructor(
+    private http:HttpClient,
+    private afs: Firestore,
+    ) {
+      this.categoryCollection = collection(this.afs, 'categories');
+     }
 
   getAll(): Observable<ICategoriesResponse[]>{
     return this.http.get<ICategoriesResponse[]>(this.api.categories);

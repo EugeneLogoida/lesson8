@@ -1,16 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProductInfoComponent } from './product-info.component';
-import {ActivatedRoute} from "@angular/router";
+import { WeCallComponent } from './we-call.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute } from "@angular/router";
 
-xdescribe('ProductInfoComponent', () => {
-  let component: ProductInfoComponent;
-  let fixture: ComponentFixture<ProductInfoComponent>;
+describe('WeCallComponent', () => {
+  let component: WeCallComponent;
+  let fixture: ComponentFixture<WeCallComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductInfoComponent ],
+      declarations: [ WeCallComponent ],
       imports:[
+        ReactiveFormsModule,
 
       ],
       providers:[
@@ -21,7 +23,7 @@ xdescribe('ProductInfoComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProductInfoComponent);
+    fixture = TestBed.createComponent(WeCallComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

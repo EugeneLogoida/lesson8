@@ -45,8 +45,6 @@ export class HeaderComponent implements OnInit {
     if(localStorage.length > 0 && localStorage.getItem('basket')){
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
       console.log(this.basket);
-
-
     }
     this.getTotalPrice()
   }

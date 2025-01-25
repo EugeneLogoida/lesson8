@@ -85,20 +85,11 @@
                     </li>
 
                     <li class="nav-item" *ngIf="!isLogin">
-                        <!-- <a [routerLink]="[ '/auth' ]" routerLinkActive="route-active" class="nav-link"
-                            aria-current="page">
-                            <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""
-                                oncontextmenu="return false">
-
-                        </a> -->
                         <a (click)="openLoginDialog()" class="nav-link"
                             aria-current="page">
                             <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""
                                 oncontextmenu="return false">
-
                         </a>
-
-
                     </li>
                     <li class="nav-item" *ngIf="isLogin">
                         <a [routerLink]="[ '/'+loginUrl ]" routerLinkActive="route-active" class="nav-link"
@@ -110,9 +101,7 @@
                         </a>
                         <a routerLinkActive="route-active" class="nav-link" (click)="logout()"
                             aria-current="page">
-
                                 Logout
-
                         </a>
                     </li>
 

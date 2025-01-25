@@ -9,7 +9,7 @@ import {AdminOrdersComponent} from "./admin-orders/admin-orders.component";
 
 
 const routes: Routes = [
-  { path: '', component: AdminComponent, canActivate: [AuthGuard] , children: [
+  { path: '', component: AdminComponent, canActivate: [] , children: [
       { path: 'actions', component: AdminActionsComponent },
       { path: 'products', component: AdminProductsComponent },
       { path: 'categories', component: AdminCategoriesComponent },

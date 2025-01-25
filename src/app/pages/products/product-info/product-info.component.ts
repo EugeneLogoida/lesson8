@@ -12,16 +12,16 @@ export class ProductInfoComponent implements OnInit {
   public currentProduct!:IProductsResponse;
 
   constructor(
-    private activatedRoute: ActivatedRoute, 
+    private activatedRoute: ActivatedRoute,
     private orderService: OrderService
     ) { }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(response =>{
       this.currentProduct = response['productsInfo']
+
     })
-    console.log();
-    
+
   }
   qChange(b: boolean, product: IProductsResponse): void {
     if (b) {
